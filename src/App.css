@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #16202a;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.sec {
+  width: 70vw;
+  margin: 0 auto;
   color: white;
+  position: relative;
+  display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 1650px) {
+  .sec {
+    width: 83vw;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media all and (max-width: 1240px) {
+  .sec {
+    width: 95vw;
+  }
+  .main {
+    width: 50vw;
+  }
+}
+@media all and (max-width: 1020px) {
+  .sec {
+    width: 100vw;
+    margin: 1rem 0;
+  }
+  .main {
+    width: 65vw;
+  }
+  .trends {
+    display: none;
+  }
+}
+@media all and (max-width: 800px) {
+  .sec {
+    justify-content: start;
+  }
+  .main {
+    width: 80vw;
+  }
+}
+@media (max-width: 500px) {
+  .sec {
+    margin: 1rem 0.5rem;
+    width: 90vw;
+  }
+  .main {
+    width: 100vw;
+    margin: 0;
+    width: 90vw;
+    border: 0;
+  }
+  form {
+    display: none;
+  }
+  .header {
+    background-color: #16202af7;
+    position: fixed;
+    top: 0;
+    padding: 1rem 0.2rem;
+    width: 100%;
+    z-index: 1;
+    margin-left: -0.4rem;
+  }
+  .show {
+    margin: 0 -0.8rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(120, 120, 120, 0.12);
+    border-bottom: 1px solid rgba(120, 120, 120, 0.1);
+  }
+  .home-profile-img {
+    display: inline;
+    border-radius: 25px;
+  }
+  .home-text {
+    display: inline;
+    position: absolute;
+    top: 1.5rem;
+    margin-left: 1rem;
+  }
+  .feed {
+    margin: 0 -0.8rem;
+  }
+  .tweet-img {
+    max-width: 20rem;
+  }
+  nav {
+    border-top: 1px solid rgba(120, 120, 120, 0.12);
+    border-bottom: 1px solid rgba(120, 120, 120, 0.1);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #16202a;
+    padding: 0.5rem;
+  }
+  .bottom-icons {
+    background-color: transparent;
+    padding-right: 1rem;
+    color: white;
+    font-size: 1.4rem;
+    border: 0;
   }
 }
