@@ -6,7 +6,7 @@ function TweetForm() {
       <form>
         <img
           src="/img/gQb_4vsj_400x400.jpg"
-          class="tweet-feed-dp"
+          className="tweet-feed-dp"
           alt=""
           width="50px"
         />
@@ -20,21 +20,23 @@ function TweetForm() {
 
         {/*  <input
           type="text"
-          class="tweet-field"
+          className="tweet-field"
           placeholder="What is happening?"
         /> */}
 
-        <div class=" iconsNbtn">
-          <div class="tweet-field-icons">
-            <span class="material-icons-outlined">perm_media</span>
-            <span class="material-icons-outlined">gif_box</span>
-            <span class="material-icons-outlined">poll</span>
-            <span class="material-icons-outlined">sentiment_satisfied_alt</span>
-            <span class="material-icons-outlined">schedule</span>
-            <span class="material-icons-outlined">location_on</span>
+        <div className=" iconsNbtn">
+          <div className="tweet-field-icons">
+            <span className="material-icons-outlined">perm_media</span>
+            <span className="material-icons-outlined">gif_box</span>
+            <span className="material-icons-outlined">poll</span>
+            <span className="material-icons-outlined">
+              sentiment_satisfied_alt
+            </span>
+            <span className="material-icons-outlined">schedule</span>
+            <span className="material-icons-outlined">location_on</span>
           </div>
-          <div class="small-tweet-btn">
-            <button class="tweet-field-btn">Tweet</button>
+          <div className="small-tweet-btn">
+            <button className="tweet-field-btn">Tweet</button>
           </div>
         </div>
       </form>

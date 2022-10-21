@@ -1,16 +1,8 @@
 import "./App.css";
-import Nav from "./components/Nav";
-import MainSec from "./components/MainSec";
-import Trends from "./components/Trends";
+import Routers from "./Routers";
 
 function App() {
-  return (
-    <div class="sec">
-      <Nav />
-      <MainSec />
-      <Trends />
-    </div>
-  );
+  return <Routers />;
 }
 
 export default App;

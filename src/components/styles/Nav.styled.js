@@ -68,13 +68,57 @@ export const NavStyledSec = styled.section`
   }
   .small-round {
     display: none;
-    position: absolute;
-    bottom: 10px;
+  }
+  .nav-footer {
+    background-color: #16202a;
+    position: fixed;
+    bottom: 20px;
+    cursor: pointer;
+  }
+  .nav-footer a {
+    color: white;
+    text-decoration: none;
+  }
+  .nav-footer h3 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .nav-footer span {
+    margin-left: 2rem;
+  }
+  .hide-logout-popup {
+    display: none;
+  }
+  .logout-popup {
+    z-index: 3;
+    min-width: 15rem;
+    height: 6rem;
+    position: fixed;
+    bottom: 7rem;
+    box-shadow: 2px 2px 2px 2px #1f2c39;
+    background-color: #16202a;
+    border-radius: 8px;
+  }
+  .logout-popup ul {
+    list-style: none;
+    padding: 0;
+    padding: 8px 0;
+  }
+  .logout-popup li {
+    cursor: pointer;
+    padding: 8px 0;
+  }
+  .logout-popup li:hover {
+    background-color: #1f2c39;
   }
   .footer-profile {
-    position: fixed;
-    bottom: 10px;
-    // font-size: xx-large;
+    width: 15rem;
+    height: 4.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+  .footer-profile:hover {
+    background-color: #1f2c39;
   }
   .media {
     display: flex;
@@ -82,12 +126,11 @@ export const NavStyledSec = styled.section`
   .footer-profile-more {
     position: absolute;
     top: 1rem;
-    right: -3rem;
+    right: 11px;
     font-size: xx-large;
   }
   .tweet-feed-dp {
-    border-radius: 25px;
-    margin-right: 0.5rem;
+    border-radius: 50%;
   }
   nav {
     display: none;
@@ -108,10 +151,18 @@ export const NavStyledSec = styled.section`
       margin-right: 0 !important;
       background-color: rgb(29, 155, 240);
     }
+
+    .small-round img {
+      height: 40px;
+    }
     .small-round {
       display: block;
-      position: relative;
       margin-top: 3rem;
+      padding: 0.8rem;
+      border-radius: 50%;
+    }
+    .small-round:hover {
+      background-color: #1f2c39;
     }
     .footer-profile {
       display: none;

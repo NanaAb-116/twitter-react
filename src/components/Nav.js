@@ -56,17 +56,17 @@ function Nav() {
         <NavFooter />
       </div>
       <nav>
-        <button class="bottom-icons">
-          <i class="fa-solid fa-house"></i>
+        <button className="bottom-icons">
+          <i className="fa-solid fa-house"></i>
         </button>
-        <button class="bottom-icons">
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <button className="bottom-icons">
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
-        <button class="bottom-icons">
-          <i class="fa-regular fa-bell"></i>
+        <button className="bottom-icons">
+          <i className="fa-regular fa-bell"></i>
         </button>
-        <button class="bottom-icons">
-          <i class="fa-regular fa-envelope"></i>
+        <button className="bottom-icons">
+          <i className="fa-regular fa-envelope"></i>
         </button>
       </nav>
     </NavStyledSec>

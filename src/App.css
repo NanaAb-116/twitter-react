@@ -16,17 +16,15 @@ body {
   background-color: #16202a;
 }
 .sec {
-  width: 70vw;
+  width: 1440px;
   margin: 0 auto;
   color: white;
   position: relative;
   display: flex;
 }
-
 nav {
   display: none;
 }
-
 @media (max-width: 1650px) {
   .sec {
     width: 83vw;
@@ -36,17 +34,11 @@ nav {
   .sec {
     width: 95vw;
   }
-  .main {
-    width: 50vw;
-  }
 }
 @media all and (max-width: 1020px) {
   .sec {
     width: 100vw;
     margin: 1rem 0;
-  }
-  .main {
-    width: 65vw;
   }
   .trends {
     display: none;
@@ -56,20 +48,11 @@ nav {
   .sec {
     justify-content: start;
   }
-  .main {
-    width: 80vw;
-  }
 }
 @media (max-width: 500px) {
   .sec {
     margin: 1rem 0.5rem;
     width: 90vw;
-  }
-  .main {
-    width: 100vw;
-    margin: 0;
-    width: 90vw;
-    border: 0;
   }
   form {
     display: none;
