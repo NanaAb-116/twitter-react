@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { authenticateWithGoogle } from "../utils/firebaseFunction";
 import LoginFooter from "./LoginFooter";
 import LoginModal from "./LoginModal";
@@ -8,11 +8,18 @@ import SignUpModal from "./SignUpModal";
 import { LoginSection, LoginModalSec } from "./styles/Login.styled";
 
 function Login() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.user);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate("/");
+    }
+  }, [dispatch, navigate, user]);
 
   return (
     <LoginSection>
@@ -32,12 +39,6 @@ function Login() {
               <span>Sign up with Google</span>
             </button>
             <br />
-            {/* <a href="#">
-              <button className="apple">
-                <i className="fa-brands fa-apple"></i>
-                <span>Sign up with Apple</span>
-              </button>
-            </a> */}
             <p className="or">or</p>
             <button
               className="email"

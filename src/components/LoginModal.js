@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebaseConfig";
+import { auth, db } from "../firebase/firebaseConfig";
 import { authenticateWithGoogle, fetchUser } from "../utils/firebaseFunction";
 import { setUser } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { doc, onSnapshot } from "firebase/firestore";
 
 function LoginModal({ setIsModalOpen }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login, setLogin] = useState({ email: "", password: "" });
-  const [isAuth, setIsAuth] = useState(false);
   const [msg, setMsg] = useState("");
 
   const handleChamge = (e) => {
@@ -28,22 +28,19 @@ function LoginModal({ setIsModalOpen }) {
     ) {
       console.log("ok");
       try {
-        const {
-          user: { providerData },
-        } = await signInWithEmailAndPassword(auth, login.email, login.password);
-        sessionStorage.setItem("user", JSON.stringify(providerData[0]));
+        await signInWithEmailAndPassword(auth, login.email, login.password);
+
+        onSnapshot(doc(db, "Users", login.email), (doc) => {
+          sessionStorage.setItem("user", JSON.stringify(doc.data()));
+          console.log(doc.data());
+          dispatch(setUser(doc.data()));
+        });
         setIsModalOpen(false);
-        setIsAuth(true);
       } catch (error) {
         setMsg(error.message);
       }
     }
   };
-
-  useEffect(() => {
-    const userInfo = fetchUser();
-    dispatch(setUser(userInfo));
-  }, [isAuth]);
 
   return (
     <div className="login-mod">

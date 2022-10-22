@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearUser, setUser } from "../features/user/userSlice";
 import { fetchUser } from "../utils/firebaseFunction";
 
 function NavFooter() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     const userInfo = fetchUser();
     dispatch(setUser(userInfo));
-  }, []);
+  }, [dispatch]);
   return (
     <>
       {user ? (
         <>
           <aside className={isPopupOpen ? "logout-popup" : "hide-logout-popup"}>
             <ul>
-              <li>Change Profile Picture</li>
+              <li onClick={() => navigate("/settings")}>
+                Change Profile Picture
+              </li>
               <li onClick={() => dispatch(clearUser())}>
                 Log out @{user?.userName || user?.displayName}
               </li>
@@ -32,7 +35,7 @@ function NavFooter() {
             <div className="footer-profile">
               <div className="media">
                 <img
-                  src="./img/gQb_4vsj_400x400.jpg"
+                  src={user.photoURL}
                   className="tweet-feed-dp"
                   alt="dp"
                   height="50px"
@@ -47,11 +50,7 @@ function NavFooter() {
               </div>
             </div>
             <div className="small-round">
-              <img
-                src="./img/gQb_4vsj_400x400.jpg"
-                className="tweet-feed-dp"
-                alt="dp"
-              />
+              <img src={user.photoURL} className="tweet-feed-dp" alt="dp" />
             </div>
           </section>
         </>

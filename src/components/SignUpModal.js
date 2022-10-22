@@ -42,7 +42,8 @@ function SignUpModal({ setIsSignUpModalOpen, setIsModalOpen }) {
             displayName: login.fullName,
             userName: login.userName,
             email: login.email,
-            photoURL: "",
+            photoURL:
+              "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=a74e5163-0422-4b75-bad5-cc3333d361ef",
           },
           {
             merge: true,

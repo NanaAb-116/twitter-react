@@ -104,7 +104,7 @@ export const MainStyled = styled.div`
   }
   .tweet-img {
     margin: 0.5rem 0;
-    max-height: 30rem;
+    max-width: 92%;
     border-radius: 8px;
   }
   .media {

@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
+  tweets: [],
+  isLoading: true,
 };
 
 const userSlice = createSlice({
@@ -15,9 +17,13 @@ const userSlice = createSlice({
       state.user = null;
       sessionStorage.clear();
     },
+    setTweets: (state, action) => {
+      state.tweets = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setTweets } = userSlice.actions;
 
 export default userSlice.reducer;

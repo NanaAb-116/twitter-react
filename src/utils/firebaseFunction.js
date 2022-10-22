@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { app, auth, db } from "../firebase/firebaseConfig";
 
 export const fetchUser = () => {
@@ -14,7 +14,6 @@ export const fetchUser = () => {
     sessionStorage.getItem("user") !== "undefined"
       ? JSON.parse(sessionStorage.getItem("user"))
       : sessionStorage.clear();
-
   return userInfo;
 };
 
@@ -34,7 +33,8 @@ export const authenticateWithGoogle = async (navigate) => {
         displayName: providerData[0].displayName,
         userName: providerData[0].displayName,
         email: providerData[0].email,
-        photoURL: providerData[0].photoURL,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=a74e5163-0422-4b75-bad5-cc3333d361ef",
       },
       {
         merge: true,
@@ -46,7 +46,7 @@ export const authenticateWithGoogle = async (navigate) => {
   }
 };
 
-export const registerUser = async (email, password, firstName, lastName) => {
+export const registerUser = async (email, password, fullName, userName) => {
   try {
     const {
       user: { providerData },
@@ -55,9 +55,11 @@ export const registerUser = async (email, password, firstName, lastName) => {
       doc(db, "Users", providerData[0].email),
       {
         userId: providerData[0].uid,
-        firstName: firstName,
-        lastName: lastName,
-        userEmail: providerData[0].email,
+        displayName: userName,
+        fullName: fullName,
+        email: providerData[0].email,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=a74e5163-0422-4b75-bad5-cc3333d361ef",
       },
       {
         merge: true,
@@ -71,11 +73,12 @@ export const registerUser = async (email, password, firstName, lastName) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const {
-      user: { providerData },
-    } = await signInWithEmailAndPassword(auth, email, password);
-    sessionStorage.setItem("user", JSON.stringify(providerData[0]));
-    // return providerData[0];
+    await signInWithEmailAndPassword(auth, email, password);
+
+    onSnapshot(doc(db, "User", email), (doc) => {
+      console.log(doc.data());
+      // sessionStorage.setItem("user", JSON.stringify(doc.data()));
+    });
   } catch (error) {
     console.log(error.message);
   }

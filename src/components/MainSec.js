@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { MainStyled } from "./styles/Main.styled";
 import TweetForm from "./TweetForm";
 
 function MainSec() {
+  const { tweets } = useSelector((store) => store.user);
   return (
     <MainStyled>
       <section className="main-section">
@@ -28,6 +30,72 @@ function MainSec() {
             </a>
           </div>
         </div>
+        {tweets?.map((item) => {
+          const { id, tweet, likes, retweets, comments, timestamp } = item;
+          return (
+            <div className="feed" key={id}>
+              <div className="tweet">
+                <div className="tweet-profile ">
+                  <div className="media">
+                    <img
+                      src={item.photoURL}
+                      className="tweet-feed-dp"
+                      alt=""
+                      height="50px"
+                    />
+                    <div className="twt">
+                      <h5>
+                        {item.displayName}
+                        <span className="at-n-time">
+                          @{item.userName || item.displayName} · 3h
+                        </span>
+                      </h5>
+                      <p>{tweet}</p>
+                      {item.images.map((img) => {
+                        return (
+                          <img
+                            key={img}
+                            src={img}
+                            className="tweet-img"
+                            alt="-tweet"
+                          />
+                        );
+                      })}
+                      <span className="material-icons-outlined tweet-profile-more">
+                        more_horiz
+                      </span>
+                      <span></span>
+                    </div>
+                  </div>
+                  <div className="responses">
+                    <div>
+                      <span className="material-icons-outlined">
+                        chat_bubble_outline
+                      </span>
+                      <p className="response-count">{comments.length}</p>
+                    </div>
+                    <div>
+                      <span className="material-icons-outlined"> repeat </span>
+                      <p className="response-count">{retweets.length}</p>
+                    </div>
+                    <div>
+                      <span className="material-icons-outlined">
+                        favorite_border
+                      </span>
+                      <p className="response-count">{likes.length}</p>
+                    </div>
+                    <div>
+                      <span className="material-icons-outlined">
+                        file_download
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
         <div className="feed">
           <div className="tweet">
             <div className="tweet-profile ">
