@@ -21,10 +21,12 @@ body {
   color: white;
   position: relative;
   display: flex;
+  justify-content: center;
 }
 nav {
   display: none;
 }
+
 @media (max-width: 1650px) {
   .sec {
     width: 83vw;

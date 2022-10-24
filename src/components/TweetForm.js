@@ -1,16 +1,22 @@
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { db } from "../firebase/firebaseConfig";
+import { db, storage } from "../firebase/firebaseConfig";
+import Loader from "./Loader";
+import UploadImages from "./UploadImages";
 
 function TweetForm() {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const [tweet, setTweet] = useState("");
-  const [img, setImg] = useState("");
   const [id, setId] = useState(uuid());
+  const [images, setImages] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [msg, setMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,12 +27,11 @@ function TweetForm() {
         await setDoc(doc(db, "Tweets", id), {
           id,
           tweet,
-          ...user,
-          uid: user?.id,
+          userId: user?.userId,
           likes: [],
           retweets: [],
           comments: [],
-          images: [],
+          images: imageUrls,
           timestamp: serverTimestamp(),
         });
       } catch (error) {
@@ -34,11 +39,22 @@ function TweetForm() {
       }
       setId(uuid());
       setTweet("");
+      setImageUrls([]);
     }
+  };
+
+  const deleteImage = (index) => {
+    setIsImageLoading(true);
+    const deleteRef = ref(storage, imageUrls[index]);
+    deleteObject(deleteRef).then(() => {
+      imageUrls.splice(index, 1);
+      setIsImageLoading(false);
+    });
   };
 
   return (
     <>
+      {msg ? <p className="alert">{msg}</p> : ""}
       <form onSubmit={handleSubmit}>
         <img
           src={user?.photoURL}
@@ -52,13 +68,38 @@ function TweetForm() {
           id="tweet-field"
           placeholder="What is happening?"
           wrap="soft"
+          rows="2"
           value={tweet}
           onChange={(e) => setTweet(e.target.value)}
         ></textarea>
 
+        {isImageLoading && imageUrls > 0 ? (
+          <Loader />
+        ) : (
+          <div className="tweet-images">
+            {imageUrls?.map((item, index) => {
+              return (
+                <span key={index} className="img">
+                  <img src={item} alt="" />
+                  <span className="close" onClick={() => deleteImage(index)}>
+                    <i className="fa-solid fa-xmark"></i>
+                  </span>
+                </span>
+              );
+            })}
+          </div>
+        )}
+
         <div className=" iconsNbtn">
           <div className="tweet-field-icons">
-            <span className="material-icons-outlined">perm_media</span>
+            <UploadImages
+              images={images}
+              setImages={setImages}
+              setImageUrls={setImageUrls}
+              setIsImageLoading={setIsImageLoading}
+              setMsg={setMsg}
+              imageUrls={imageUrls}
+            />
             <span className="material-icons-outlined">gif_box</span>
             <span className="material-icons-outlined">poll</span>
             <span className="material-icons-outlined">

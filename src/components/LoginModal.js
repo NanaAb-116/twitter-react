@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase/firebaseConfig";
-import { authenticateWithGoogle, fetchUser } from "../utils/firebaseFunction";
+import { authenticateWithGoogle } from "../utils/firebaseFunction";
 import { setUser } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

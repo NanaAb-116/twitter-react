@@ -46,6 +46,50 @@ export const MainStyled = styled.div`
     font-size: 1.3rem;
     color: rgb(168, 168, 168);
   }
+  .tweet-images {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50px;
+  }
+  .tweet-images .img {
+    overflow: hidden;
+    position: relative;
+    height: 10rem;
+    width: 15rem;
+    border-radius: 1rem;
+    margin: 6px;
+  }
+  .tweet-images img {
+    position: relative;
+    width: 14rem;
+    transform: scale(1.3);
+  }
+  #upload {
+    cursor: pointer;
+  }
+  .close {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #43474b;
+    height: 30px;
+    width: 30px;
+  }
+  .close:hover {
+    background-color: #5f6366;
+  }
+  .alert {
+    z-index: 2;
+    background-color: rgba(29, 156, 240);
+    position: fixed;
+    bottom: 1rem;
+    padding: 0.3rem 1rem;
+  }
   .iconsNbtn {
     display: flex;
     justify-content: space-between;
@@ -57,6 +101,7 @@ export const MainStyled = styled.div`
     padding: 0.8rem 0.5rem;
   }
   .tweet-field-icons {
+    cursor: pointer;
     color: rgba(29, 156, 240, 0.748);
     margin: 0.7rem;
   }
@@ -102,10 +147,17 @@ export const MainStyled = styled.div`
     border-radius: 25px;
     margin-right: 0.5rem;
   }
+  .images-container {
+    overflow: hidden;
+    display: grid;
+    gap: 0;
+    grid-template-columns: auto auto;
+  }
   .tweet-img {
     margin: 0.5rem 0;
-    max-width: 92%;
     border-radius: 8px;
+    max-width: 92%;
+    height: inherit;
   }
   .media {
     display: flex;
@@ -139,12 +191,9 @@ export const MainStyled = styled.div`
     display: inline;
     margin-left: 0.5rem;
   }
-  .responses span {
+  .responses div {
+    cursor: pointer;
     font-size: medium;
-    vertical-align: -4px;
-  }
-  .icons {
-    vertical-align: -4px;
   }
   @media all and (max-width: 1240px) {
      {

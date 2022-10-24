@@ -29,12 +29,12 @@ export const authenticateWithGoogle = async (navigate) => {
     await setDoc(
       doc(db, "Users", providerData[0].email),
       {
-        userId: providerData[0].uid,
+        userId: providerData[0].email,
         displayName: providerData[0].displayName,
         userName: providerData[0].displayName,
         email: providerData[0].email,
         photoURL:
-          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=a74e5163-0422-4b75-bad5-cc3333d361ef",
+          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=c2aed808-e1f7-42f0-86dc-8430a0f464a8",
       },
       {
         merge: true,
@@ -59,7 +59,7 @@ export const registerUser = async (email, password, fullName, userName) => {
         fullName: fullName,
         email: providerData[0].email,
         photoURL:
-          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=a74e5163-0422-4b75-bad5-cc3333d361ef",
+          "https://firebasestorage.googleapis.com/v0/b/twitter-3890d.appspot.com/o/twitter-avi-gender-balanced-figure.png?alt=media&token=c2aed808-e1f7-42f0-86dc-8430a0f464a8",
       },
       {
         merge: true,

@@ -170,9 +170,16 @@ function Settings() {
             </button>
           </div>
           <div className="upload" style={{ backgroundImage: ` url(${img})` }}>
-            <span>
-              <i className="fa-solid fa-camera"></i>
-            </span>
+            <label>
+              <span>
+                <i className="fa-solid fa-camera"></i>
+              </span>
+              <input
+                type="file"
+                style={{ width: "0", height: "0" }}
+                onChange={uploadImage}
+              />
+            </label>
           </div>
           <div className="username">
             <label htmlFor="name">User Name</label>
@@ -183,7 +190,6 @@ function Settings() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <input type="file" name="" id="" onChange={uploadImage} />
           </div>
         </form>
       </div>
