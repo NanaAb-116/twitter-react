@@ -22,7 +22,7 @@ function TweetForm() {
     e.preventDefault();
     if (user === null) {
       navigate("/login");
-    } else {
+    } else if (tweet !== "" || tweet !== "") {
       try {
         await setDoc(doc(db, "Tweets", id), {
           id,

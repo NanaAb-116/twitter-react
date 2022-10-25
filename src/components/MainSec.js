@@ -93,8 +93,8 @@ function MainSec() {
                         {temp?.displayName}{" "}
                         <span className="at-n-time">
                           @{temp?.userName || temp?.displayName} ·{" "}
-                          {months[timestamp.toDate().getUTCMonth()]}{" "}
-                          {timestamp.toDate().getUTCDate()}
+                          {months[timestamp?.toDate().getUTCMonth()]}{" "}
+                          {timestamp?.toDate().getUTCDate()}
                         </span>
                       </h5>
                       <p>{tweet}</p>
