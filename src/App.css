@@ -56,9 +56,6 @@ nav {
     margin: 1rem 0.5rem;
     width: 90vw;
   }
-  form {
-    display: none;
-  }
   .header {
     background-color: #16202af7;
     position: fixed;

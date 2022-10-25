@@ -21,7 +21,7 @@ export const MainStyled = styled.div`
     width: 35vw;
     padding: 1rem 0.5rem;
   }
-  form {
+  .form {
     margin-top: 4rem;
     padding-left: 0.5rem;
   }
@@ -214,10 +214,16 @@ export const MainStyled = styled.div`
      {
       width: 100vw;
       margin: 0;
-      width: 90vw;
       border: 0;
     }
-    form {
+    .tweets {
+      margin-top: 4.5rem;
+    }
+    .form {
+      // display: none;
+      padding: 0;
+    }
+    .form .tweet-feed-dp {
       display: none;
     }
     .header {
@@ -228,6 +234,13 @@ export const MainStyled = styled.div`
       width: 100%;
       z-index: 1;
       margin-left: -0.4rem;
+    }
+    .iconsNbtn {
+      padding: 0;
+    }
+    .iconsNbtn span {
+      padding: 0;
+      padding-right: 10px;
     }
     .show {
       margin: 0 -0.8rem;

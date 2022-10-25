@@ -190,6 +190,7 @@ export const NavStyledSec = styled.section`
       justify-content: space-between;
       position: fixed;
       bottom: 0;
+      left: 0;
       width: 100%;
       background-color: #16202a;
       padding: 0.5rem;

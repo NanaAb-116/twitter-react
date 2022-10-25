@@ -53,7 +53,7 @@ function TweetForm() {
   };
 
   return (
-    <>
+    <div className="form">
       {msg ? <p className="alert">{msg}</p> : ""}
       <form onSubmit={handleSubmit}>
         <img
@@ -115,7 +115,7 @@ function TweetForm() {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
