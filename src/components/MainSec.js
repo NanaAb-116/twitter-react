@@ -7,13 +7,15 @@ import { MainStyled } from "./styles/Main.styled";
 import TweetForm from "./TweetForm";
 
 function MainSec() {
-  const { tweets, users, isLoading } = useSelector((store) => store.user);
+  const { tweets, users, user, isLoading } = useSelector((store) => store.user);
 
   const getName = (id) => {
     return users.find((user) => user.userId === id);
   };
 
-  const deleteTweet = async (id) => {
+  const deleteTweet = async (userId, id) => {
+    if (userId === user?.userid) {
+    }
     await deleteDoc(doc(db, "Tweets", id));
   };
 
@@ -139,11 +141,15 @@ function MainSec() {
                         </span>
                         <p className="response-count">{likes.length}</p>
                       </div>
-                      <div onClick={() => deleteTweet(id)}>
-                        <span>
-                          <i className="fa-solid fa-trash"></i>
-                        </span>
-                      </div>
+                      {userId === user?.userId ? (
+                        <div onClick={() => deleteTweet(userId, id)}>
+                          <span>
+                            <i className="fa-solid fa-trash"></i>
+                          </span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>

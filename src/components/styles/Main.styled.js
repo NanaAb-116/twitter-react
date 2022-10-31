@@ -216,9 +216,9 @@ export const MainStyled = styled.div`
       margin: 0;
       border: 0;
     }
-    .tweets {
-      margin-top: 4.5rem;
-    }
+    // .tweets {
+    //   margin-top: 4.5rem;
+    // }
     .form {
       // display: none;
       padding: 0;
