@@ -29,7 +29,7 @@ function SignUpModal({ setIsSignUpModalOpen, setIsModalOpen }) {
       console.log("ok");
       try {
         const {
-          user: { providerData },
+          user: { providerData, uid },
         } = await createUserWithEmailAndPassword(
           auth,
           login.email,
@@ -38,7 +38,7 @@ function SignUpModal({ setIsSignUpModalOpen, setIsModalOpen }) {
         await setDoc(
           doc(db, "Users", providerData[0].email),
           {
-            userId: providerData[0].uid,
+            userId: uid,
             displayName: login.fullName,
             userName: login.userName,
             email: login.email,
